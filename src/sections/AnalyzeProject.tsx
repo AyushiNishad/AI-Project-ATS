@@ -17,6 +17,8 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { cn } from '@/lib/utils';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+
 type Source = 'github' | 'zip';
 type Status = 'idle' | 'loading' | 'error' | 'success';
 
@@ -123,7 +125,8 @@ export function AnalyzeProject({ onAnalyze }: AnalyzeProps) {
 
     try {
       const response = await fetch(
-        'http://127.0.0.1:5000/api/analyze',
+          `${API_URL}/api/analyze`,
+        
         {
           method: 'POST',
           headers: {
